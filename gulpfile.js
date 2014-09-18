@@ -40,7 +40,7 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest(location.dist+'/js'));
 });
 gulp.task('pages', function() {
-    var opts = {comments:true,spare:true};
+    var opts = {comments:false,spare:true};
 
   gulp.src(location.src+'*.html')
     .pipe(minifyHTML(opts))
@@ -50,6 +50,7 @@ gulp.task('pages', function() {
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch(location.src + '**/js/*.js', ['scripts']);
+    gulp.watch(location.src + '**/*.html', ['pages']);
 });
 
 // Default Task
