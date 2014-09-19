@@ -18,7 +18,10 @@ var location = {
 }
 
 gulp.task('styles', function() {
-  gulp.src('./src/css/*.css')
+  gulp.src([
+        // location.bc + '/normalize-css/normalize.css',
+        location.src + '/css/*.css',
+    ])
     .pipe(concat('all.css'))
     .pipe(gulp.dest(location.dist+'/css'))
     .pipe(rename('all.min.css'))
@@ -51,6 +54,7 @@ gulp.task('pages', function() {
 gulp.task('watch', function() {
     gulp.watch(location.src + '**/js/*.js', ['scripts']);
     gulp.watch(location.src + '**/*.html', ['pages']);
+    gulp.watch(location.src + '**/css/*.css', ['styles']);
 });
 
 // Default Task
